@@ -1,4 +1,4 @@
-# quarkus_tutorials
+# quarkus_tutorials https://youtube.com/playlist?list=PLzdlNxYnNoaf5bb-Pwb7MbWHGlRf28pVO&si=fUuG6enQWCokfN4t
 1. Support both
 
 ```
@@ -15,4 +15,8 @@ Reactive -> If ABC is fetched, it will return data 1 by 1 as it gets.
    2. RESTEasy Classic Jackson
 7. Add project to intellij
 8. Add plugin in Intellij as > Quarkus Tools
-9. run command ./mvnw quarkus:dev (Ref : [Quarkus_README.md](Quarkus_README.md) )
+9. run Project with command ./mvnw quarkus:dev (Ref : [Quarkus_README.md](Quarkus_README.md) )
+10. In 4th Lecture 
+11. To check Quarkus supported Extension/Dependencies -> ```mvn quarkus:list-extensions``` OR ```./mvnw quarkus:list-extensions```
+12. To Add  > ```./mvnw quarkus:add-extension -Dextensions="_____"``` OR ```mvn quarkus:add-extension -Dextensions="Mutiny"```
+
