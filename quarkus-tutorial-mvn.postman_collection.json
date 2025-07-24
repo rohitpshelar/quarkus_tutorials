@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "ec86ace8-c374-4333-914f-8ad8d7e7c0bb",
+		"name": "quarkus-tutorial-mvn",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "345744"
+	},
+	"item": [
+		{
+			"name": "Get Mobile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/mobile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mobile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Mobile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "8956185965",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/mobile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mobile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Mobile",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "8956185965",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/mobile/8956185965?new=9822454825",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mobile",
+						"8956185965"
+					],
+					"query": [
+						{
+							"key": "new",
+							"value": "9822454825"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Mobile",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/mobile/8956185965",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mobile",
+						"8956185965"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
