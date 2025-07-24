@@ -20,4 +20,6 @@ Reactive -> If ABC is fetched, it will return data 1 by 1 as it gets.
 11. To check Quarkus supported Extension/Dependencies -> ```mvn quarkus:list-extensions``` OR ```./mvnw quarkus:list-extensions```
 12. To Add  > ```./mvnw quarkus:add-extension -Dextensions="_____"``` OR ```mvn quarkus:add-extension -Dextensions="Mutiny"```
 13. In 6th Part - All 4 API added [MobileResource.java](src/main/java/com/learn/resource/MobileResource.java) and their Postman collection [quarkus-tutorial-mvn.postman_collection.json](quarkus-tutorial-mvn.postman_collection.json)
+14. In 7th Part - All 4 API updated with modal and 5th API ByNumber ([Mobile.java](src/main/java/com/learn/resource/Mobile.java)) and new resource [MobileResourcePart7.java](src/main/java/com/learn/resource/MobileResourcePart7.java) and their Postman collection [quarkus-tutorial-mvn.postman_collection.json](quarkus-tutorial-mvn.postman_collection.json)
+15. 
 
