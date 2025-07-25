@@ -7,6 +7,113 @@
 	},
 	"item": [
 		{
+			"name": "Part-1 to 6",
+			"item": [
+				{
+					"name": "Get Mobile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/mobile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"mobile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Mobile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "8956185965",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/mobile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"mobile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Mobile",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "8956185965",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/mobile/8956185965?new=9822454825",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"mobile",
+								"8956185965"
+							],
+							"query": [
+								{
+									"key": "new",
+									"value": "9822454825"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Mobile",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/mobile/8956185965",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"mobile",
+								"8956185965"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Part-7",
 			"item": [
 				{
@@ -135,106 +242,50 @@
 			]
 		},
 		{
-			"name": "Get Mobile",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/mobile",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"mobile"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Add Mobile",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "8956185965",
-					"options": {
-						"raw": {
-							"language": "text"
+			"name": "Part-9",
+			"item": [
+				{
+					"name": "Tv Series By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/tvseries/260",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tvseries",
+								"260"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/mobile",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"mobile"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update Mobile",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "8956185965",
-					"options": {
-						"raw": {
-							"language": "text"
+				{
+					"name": "Tv Series By Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/tvseries/person/lauren",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tvseries",
+								"person",
+								"lauren"
+							]
 						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/mobile/8956185965?new=9822454825",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"mobile",
-						"8956185965"
-					],
-					"query": [
-						{
-							"key": "new",
-							"value": "9822454825"
-						}
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Mobile",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/mobile/8956185965",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"mobile",
-						"8956185965"
-					]
-				}
-			},
-			"response": []
+			]
 		}
 	]
 }
