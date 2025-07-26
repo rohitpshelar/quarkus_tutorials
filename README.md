@@ -40,5 +40,14 @@ Reactive -> If ABC is fetched, it will return data 1 by 1 as it gets.
        4. Remove quarkus-resteasy and quarkus-resteasy-jackson due to conflict regards ( Caused by: jakarta.enterprise.inject.spi.DeploymentException: Mixing Quarkus REST and RESTEasy Classic server parts is not supported )
     2. Use DUMMY client as https://www.tvmaze.com/api
        1. Search TV show by Id - https://api.tvmaze.com/shows/169 
-       2. Create Modal class for above response  
+       2. Create Modal class for above response
+17. cors ( Cross Origin Resource Sharing ) - allow external service to access our service ( Open  this from Browser : [Part-10.html](Part-10.html) )
+    ```properties
+    quarkus.http.cors=true
+    quarkus.http.cors.origins=*
+    ```
+    1. Allow only specific method 
+    ```properties
+    quarkus.http.cors.methodshs=GET, POST
+    ```
     
