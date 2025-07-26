@@ -1,4 +1,4 @@
-package com.learn.resource;
+package com.learn.resource.part7;
 
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;

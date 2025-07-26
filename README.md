@@ -33,7 +33,7 @@ Reactive -> If ABC is fetched, it will return data 1 by 1 as it gets.
           quarkus.swagger-ui.always-include=false
        ```
 16. In 9th Part -  Bring data from other Micro service
-    1. Add following dependency :
+    1. Add following extension/dependency :
        1. "REST Client" to call remote API ```mvn quarkus:add-extension -Dextensions="quarkus-rest-client"```
        2. "REST Client jackson" to call remote API ```mvn quarkus:add-extension -Dextensions="quarkus-rest-client-jackson"```
        3. "quarkus-rest-jackson" to call remote API ```mvn quarkus:add-extension -Dextensions="quarkus-rest-jackson"```
@@ -41,7 +41,7 @@ Reactive -> If ABC is fetched, it will return data 1 by 1 as it gets.
     2. Use DUMMY client as https://www.tvmaze.com/api
        1. Search TV show by Id - https://api.tvmaze.com/shows/169 
        2. Create Modal class for above response
-17. cors ( Cross Origin Resource Sharing ) - allow external service to access our service ( Open  this from Browser : [Part-10.html](Part-10.html) )
+17. In Part-10 : cors ( Cross Origin Resource Sharing ) - allow external service to access our service ( Open  this from Browser : [Part-10.html](Part-10.html) )
     ```properties
     quarkus.http.cors=true
     quarkus.http.cors.origins=*
@@ -50,4 +50,31 @@ Reactive -> If ABC is fetched, it will return data 1 by 1 as it gets.
     ```properties
     quarkus.http.cors.methodshs=GET, POST
     ```
-    
+18. In Part-11, 12 : Microprofile Fault Tolerance
+    1. Add following extension/dependency :
+       1. "Fault Tolerance" to call default method if remote API offline ```mvn quarkus:add-extension -Dextensions="quarkus-smallrye-fault-tolerance"```
+      
+    2. Create Fallback Method 
+    ```java
+    @Fallback(
+        fallbackMethod = "getTvSeriesByIdFallback"
+    )
+    ```
+    3. Retry ```@Retry(maxRetries = 2)```
+    4. Timeout ```@Timeout(1000)```
+    5. Circuit Breaker
+    ```java
+    @CircuitBreaker(
+        requestVolumeThreshold=2,
+        failureRatio=0.5,
+        delay = 10, delayUnit = ChronoUnit.SECONDS
+    )
+    ```
+    6. Git Bash Script to hit URL in loop
+    ```shell
+        while true; do sleep 1; curl http://localhost:8080/tvseries/260; echo -e '\n'; done
+    ```
+13. Part-13 Hibernate-ORM PanacheEntity with H2DB
+    1. "H2DB" - ```./mvnw quarkus:add-extension -Dextensions="io.quarkus:quarkus-jdbc-h2"```
+    2. "Hibernate ORM" - ```./mvnw quarkus:add-extension -Dextensions="io.quarkus:quarkus-hibernate-orm-panache"```
+    3. Extend Entity Class with PanacheEntity

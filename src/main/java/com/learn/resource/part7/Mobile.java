@@ -1,4 +1,4 @@
-package com.learn.resource;
+package com.learn.resource.part7;
 
 
 public class Mobile {
