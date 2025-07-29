@@ -1,5 +1,6 @@
 package com.learn.resource.part13_hibernate_ORM;
 
+import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -13,10 +14,13 @@ import java.util.Optional;
 @Path("/laptop")
 public class LaptopResource {
 
+    @Inject
+    LaptopRepository laptopRepository;
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllLaptops() {
-        List<Laptop> laptopList = Laptop.listAll();
+        List<Laptop> laptopList = laptopRepository.listAll();
         return Response.ok(laptopList).build();
     }
 
@@ -24,7 +28,7 @@ public class LaptopResource {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getLaptopById(@PathParam("id") Long id) {
-        var laptop = Laptop.findById(id);
+        var laptop = laptopRepository.findById(id);
         return Response.ok(laptop).build();
     }
 
@@ -33,8 +37,8 @@ public class LaptopResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Transactional
     public Response addLaptops(Laptop laptop) {
-        Laptop.persist(laptop);
-        if (laptop.isPersistent()) {
+        laptopRepository.persist(laptop);
+        if (laptopRepository.isPersistent(laptop)) {
             return Response.created(URI.create("/laptop/" + laptop.id)).build();
 //            return Response.ok("Saved").build();
         } else {
@@ -48,7 +52,7 @@ public class LaptopResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Transactional
     public Response updateLaptopNameById(@PathParam("id") Long id, Laptop newLaptop) {
-        Optional<Laptop> optionalLaptop = Laptop.findByIdOptional(id);
+        Optional<Laptop> optionalLaptop = laptopRepository.findByIdOptional(id);
         if (optionalLaptop.isPresent()) {
             var laptopDB = optionalLaptop.get();
 
@@ -56,8 +60,8 @@ public class LaptopResource {
                 laptopDB.setName(newLaptop.name);
             }
 
-            laptopDB.persist();
-            if (laptopDB.isPersistent()) {
+            laptopRepository.persist(laptopDB);
+            if (laptopRepository.isPersistent(laptopDB)) {
                 return Response.created(URI.create("/laptop/" + laptopDB.id)).build();
             } else {
                 return Response.status(Response.Status.BAD_REQUEST).build();
@@ -71,7 +75,7 @@ public class LaptopResource {
     @Path("/{id}")
     @Transactional
     public Response deleteLaptop(@PathParam("id") Long id) {
-        var isDeleted = Laptop.deleteById(id);
+        var isDeleted = laptopRepository.deleteById(id);
         if (isDeleted) {
             return Response.ok().build();
         } else {

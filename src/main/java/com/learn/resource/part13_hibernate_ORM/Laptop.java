@@ -1,12 +1,16 @@
 package com.learn.resource.part13_hibernate_ORM;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
-import lombok.*;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
+public class Laptop {
 
-public class Laptop extends PanacheEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    Long id;
 
     String name;
     String brand;

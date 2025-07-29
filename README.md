@@ -1,4 +1,23 @@
 # quarkus_tutorials https://youtube.com/playlist?list=PLzdlNxYnNoaf5bb-Pwb7MbWHGlRf28pVO&si=fUuG6enQWCokfN4t
+
+## Spring Boot vs Quarkus Annotations Comparison
+| Spring Boot Annotation/Component   | Quarkus Equivalent | Purpose                          |
+|------------------------------------|--------------------|----------------------------------|
+| @SpringBootApplication           | @QuarkusMain | Marks the main application class |
+| @Autowired                       | @Inject | Dependency injection             |
+| @Service, @Repository          | @ApplicationScoped | service & repository component   |
+| extends CrudRepository           | implements PanacheRepository | Data access repository           |
+| @RestController                  | @Path (JAX-RS) | REST controller class            |
+| @GetMapping, @PostMapping etc. | @GET, @POST etc. (JAX-RS) | HTTP method mappings             |
+| @SpringBootTest                  | @QuarkusTest | Main test annotation             |
+| @MockBean                        | @InjectMock | Mocking dependencies in tests    |
+| @Configuration                   | @ApplicationScoped with @Produces | Configuration class              |
+| @Component                       | @ApplicationScoped | General component                |
+| @Value                           | @ConfigProperty | Configuration property injection |
+| @EnableCaching                   | @CacheResult, @CacheInvalidate etc. | Caching support                  |
+| @Async                           | @Blocking/@NonBlocking | Asynchronous processing          |
+
+
 1. Support both
 
 ```
@@ -77,4 +96,6 @@ Reactive -> If ABC is fetched, it will return data 1 by 1 as it gets.
 13. Part-13 Hibernate-ORM PanacheEntity with H2DB
     1. "H2DB" - ```./mvnw quarkus:add-extension -Dextensions="io.quarkus:quarkus-jdbc-h2"```
     2. "Hibernate ORM" - ```./mvnw quarkus:add-extension -Dextensions="io.quarkus:quarkus-hibernate-orm-panache"```
-    3. Extend Entity Class with PanacheEntity
+    3. Two Types
+       1. Extend Entity Class with PanacheEntity
+       2. Implement with PanacheRepository
