@@ -1,9 +1,6 @@
 package com.learn.resource.part13_hibernate_ORM;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -12,14 +9,14 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @NoArgsConstructor
-public class Laptop {
+public class Owner {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
     String name;
-    String brand;
-    int ram;
 
+    @OneToOne
+    Laptop laptop;
 }

@@ -17,6 +17,27 @@
 | @EnableCaching                   | @CacheResult, @CacheInvalidate etc. | Caching support                  |
 | @Async                           | @Blocking/@NonBlocking | Asynchronous processing          |
 
+| Annotation Type       | Spring Boot            | Quarkus               |
+|-----------------------|------------------------|-----------------------|
+| **Main Class**        | @SpringBootApplication | @QuarkusMain          |
+| **Dependency Inj.**   | @Autowired             | @Inject               |
+| **Components**        | @Repository            | @ApplicationScoped    |
+|                       | @Service               | @ApplicationScoped    |
+|                       | @Component             | @ApplicationScoped    |
+| **Data Access**       | CrudRepository         | PanacheRepository     |
+|                       | @Entity                | @Entity               |
+|                       | @Transactional         | @Transactional        |
+| **Web**               | @RestController        | @Path                 |
+|                       | @GetMapping            | @GET                  |
+|                       | @PostMapping           | @POST                 |
+| **Testing**           | @SpringBootTest        | @QuarkusTest          |
+|                       | @MockBean              | @InjectMock           |
+| **Configuration**     | @Value                 | @ConfigProperty       |
+| **Caching**           | @EnableCaching         | @CacheResult          |
+| **Scheduling**        | @Scheduled             | @Scheduled            |
+| **Async**             | @Async                 | @Blocking/@NonBlocking|
+
+
 
 1. Support both
 
@@ -93,9 +114,40 @@ Reactive -> If ABC is fetched, it will return data 1 by 1 as it gets.
     ```shell
         while true; do sleep 1; curl http://localhost:8080/tvseries/260; echo -e '\n'; done
     ```
-13. Part-13 Hibernate-ORM PanacheEntity with H2DB
-    1. "H2DB" - ```./mvnw quarkus:add-extension -Dextensions="io.quarkus:quarkus-jdbc-h2"```
-    2. "Hibernate ORM" - ```./mvnw quarkus:add-extension -Dextensions="io.quarkus:quarkus-hibernate-orm-panache"```
-    3. Two Types
-       1. Extend Entity Class with PanacheEntity
-       2. Implement with PanacheRepository
+    13. Part-13, 14 : Hibernate-ORM PanacheEntity with H2DB
+        1. "H2DB" - ```./mvnw quarkus:add-extension -Dextensions="io.quarkus:quarkus-jdbc-h2"```
+        2. "Hibernate ORM" - ```./mvnw quarkus:add-extension -Dextensions="io.quarkus:quarkus-hibernate-orm-panache"```
+        3. Two Types
+           1. Extend Entity Class with PanacheEntity
+           2. Implement with PanacheRepository
+        4. Mapping
+           1. One to One
+              - Add ```@OneToOne``` to secondary class
+                <table>
+                   <tr>
+                      <td>
+                         <table>
+                            <tr>
+                               <th colspan="2">Table 1</th>
+                            </tr>
+                            <tr>
+                               <td>T1_ID</td>
+                               <td>T1_Name</td>
+                            </tr>
+                         </table>
+                      </td>
+                      <td>
+                         <table>
+                            <tr>
+                               <th colspan="3">Table 2</th>
+                            </tr>
+                            <tr>
+                               <td>T2_ID</td>
+                               <td>T2S_Name</td>
+                               <td>T1_ID</td>
+                            </tr>
+                         </table>
+                      </td>
+                   </tr>
+                </table>
+               
