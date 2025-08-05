@@ -178,5 +178,70 @@ Reactive -> If ABC is fetched, it will return data 1 by 1 as it gets.
     2. Debug - Data Info
     3. warning
     4. Error
-20. Part- 30 : Exception
+20. Part- 30 : Exception -TODO
+21. Part - 32 : MicroProfile Health
+    1. Add ``` mvn quarkus:add-extension -Dextensions="quarkus-smallrye-health"```
+    2. Two Type
+       1. Liveness [LivenessHealthCheck.java](src/main/java/com/learn/resource/part30_MicroProfile_health/LivenessHealthCheck.java) - To check Proxy/Client Connections
+       2. Readiness [ReadinessHealthCheck.java](src/main/java/com/learn/resource/part30_MicroProfile_health/ReadinessHealthCheck.java) - To check DB connection
+    3. Test URLs
+       1. http://localhost:8080/q/health-ui/
+       2. http://localhost:8080/q/health
+       3. http://localhost:8080/q/health/live
+       4. http://localhost:8080/q/health/ready
+       5. http://localhost:8080/q/health/started
+       6. http://localhost:8080/q/health/well
+    22. Part-33 How to use MicroProfile Metrics 
+        1. Add ```mvn quarkus:add-extension -Dextensions="quarkus-smallrye-metrics"```
+        2. Types [Number.java](src/main/java/com/learn/resource/part33_microProfile_matrics/Number.java)
+           1. @Counted
+           ```json
+           {
+              "com.learn.resource.part33_microProfile_matrics.Number.Count_checkIfPrimeNumber": 3
+           }
+           ```
+   
+           2. @Timed
+           ```json   
+           {
+              "com.learn.resource.part33_microProfile_matrics.Number.Time_checkIfPrimeNumber": {
+              "p99": 319201.0,
+              "min": 15200.0,
+              "max": 319201.0,
+              "mean": 156003.43605748552,
+              "p50": 15600.0,
+              "p999": 319201.0,
+              "stddev": 142029.00004744556,
+              "p95": 319201.0,
+              "p98": 319201.0,
+              "p75": 280601.0,
+              "fiveMinRate": 0.2032510706679223,
+              "fifteenMinRate": 0.2011018917421949,
+              "meanRate": 0.23204665475695216,
+              "count": 4,
+              "oneMinRate": 0.21471253794774184,
+              "elapsedTime": 630602.0
+              }
+           }
+           ```
+           3. @Metered
+           ```json5
+           {
+              "com.learn.resource.part33_microProfile_matrics.Number.Metered_checkIfPrimeNumber": {
+              "fiveMinRate": 0.38704854970388447,
+              "fifteenMinRate": 0.39559850366986254,
+              "meanRate": 0.1737586528638574,
+              "count": 4,
+              "oneMinRate": 0.34222396825043916
+              }
+           }
+           ```
+           4. @Gauge(unit = MetricUnits.MILLISECONDS) - For Custom 
+           ```json
+           {
+              "com.learn.resource.part33_microProfile_matrics.Number.getHighestInputPrimeNumber": 2
+           }
+           ```
+           
+        3. Test URLs - http://localhost:8080/q/metrics/application
 
