@@ -191,57 +191,103 @@ Reactive -> If ABC is fetched, it will return data 1 by 1 as it gets.
        4. http://localhost:8080/q/health/ready
        5. http://localhost:8080/q/health/started
        6. http://localhost:8080/q/health/well
-    22. Part-33 How to use MicroProfile Metrics 
-        1. Add ```mvn quarkus:add-extension -Dextensions="quarkus-smallrye-metrics"```
-        2. Types [Number.java](src/main/java/com/learn/resource/part33_microProfile_matrics/Number.java)
-           1. @Counted
-           ```json
-           {
-              "com.learn.resource.part33_microProfile_matrics.Number.Count_checkIfPrimeNumber": 3
-           }
-           ```
+22. Part-33 How to use MicroProfile Metrics 
+    1. Add ```mvn quarkus:add-extension -Dextensions="quarkus-smallrye-metrics"```
+    2. Types [Number.java](src/main/java/com/learn/resource/part33_microProfile_matrics/Number.java)
+       1. @Counted
+       ```json
+       {
+          "com.learn.resource.part33_microProfile_matrics.Number.Count_checkIfPrimeNumber": 3
+       }
+       ```
    
-           2. @Timed
-           ```json   
-           {
-              "com.learn.resource.part33_microProfile_matrics.Number.Time_checkIfPrimeNumber": {
-              "p99": 319201.0,
-              "min": 15200.0,
-              "max": 319201.0,
-              "mean": 156003.43605748552,
-              "p50": 15600.0,
-              "p999": 319201.0,
-              "stddev": 142029.00004744556,
-              "p95": 319201.0,
-              "p98": 319201.0,
-              "p75": 280601.0,
-              "fiveMinRate": 0.2032510706679223,
-              "fifteenMinRate": 0.2011018917421949,
-              "meanRate": 0.23204665475695216,
-              "count": 4,
-              "oneMinRate": 0.21471253794774184,
-              "elapsedTime": 630602.0
-              }
-           }
-           ```
-           3. @Metered
-           ```json5
-           {
-              "com.learn.resource.part33_microProfile_matrics.Number.Metered_checkIfPrimeNumber": {
-              "fiveMinRate": 0.38704854970388447,
-              "fifteenMinRate": 0.39559850366986254,
-              "meanRate": 0.1737586528638574,
-              "count": 4,
-              "oneMinRate": 0.34222396825043916
-              }
-           }
-           ```
-           4. @Gauge(unit = MetricUnits.MILLISECONDS) - For Custom 
-           ```json
-           {
-              "com.learn.resource.part33_microProfile_matrics.Number.getHighestInputPrimeNumber": 2
-           }
-           ```
+       2. @Timed
+       ```json   
+       {
+          "com.learn.resource.part33_microProfile_matrics.Number.Time_checkIfPrimeNumber": {
+          "p99": 319201.0,
+          "min": 15200.0,
+          "max": 319201.0,
+          "mean": 156003.43605748552,
+          "p50": 15600.0,
+          "p999": 319201.0,
+          "stddev": 142029.00004744556,
+          "p95": 319201.0,
+          "p98": 319201.0,
+          "p75": 280601.0,
+          "fiveMinRate": 0.2032510706679223,
+          "fifteenMinRate": 0.2011018917421949,
+          "meanRate": 0.23204665475695216,
+          "count": 4,
+          "oneMinRate": 0.21471253794774184,
+          "elapsedTime": 630602.0
+          }
+       }
+       ```
+       3. @Metered
+       ```json5
+       {
+          "com.learn.resource.part33_microProfile_matrics.Number.Metered_checkIfPrimeNumber": {
+          "fiveMinRate": 0.38704854970388447,
+          "fifteenMinRate": 0.39559850366986254,
+          "meanRate": 0.1737586528638574,
+          "count": 4,
+          "oneMinRate": 0.34222396825043916
+          }
+       }
+       ```
+       4. @Gauge(unit = MetricUnits.MILLISECONDS) - For Custom 
+       ```json
+       {
+          "com.learn.resource.part33_microProfile_matrics.Number.getHighestInputPrimeNumber": 2
+       }
+       ```
            
-        3. Test URLs - http://localhost:8080/q/metrics/application
+    3. Test URLs - http://localhost:8080/q/metrics/application
 
+24. Part-34 Authentication and Authorization using JWT Token and Roles-Based Access Control
+    1. Create two Module
+       1. App (Course) - All APIs - [course](course)
+          1. Run 
+                ```shell
+                    cd .\course
+                    mvn quarkus:add-extension -Dextensions="quarkus-smallrye-jwt" 
+                ```
+          2. Add in [application.properties](course/src/main/resources/application.properties)
+             ```properties
+             mp.jwt.verify.issuer=jwt-token
+             mp.jwt.verify.publickey.location=../jwt/publicKey.pem
+             ```
+       2. JWT - Generate Token - [JWT](JWT)
+           1. Run
+                ```shell
+                    cd .\JWT
+                    mvn quarkus:add-extension -Dextensions="quarkus-smallrye-jwt" 
+                    mvn quarkus:add-extension -Dextensions="quarkus-smallrye-jwt-build" 
+                ```
+           2. Add in [application.properties](jwt-token/src/main/resources/application.properties)
+              ```properties
+              smallrye.jwt.sign.key.location=../jwt/privateKey.pem
+              ```
+       3. Generate Key
+          1. Open GitBash
+          2. Run
+          ```GitBash
+             mkdir jwt
+
+             openssl genrsa -out jwt/rsaPrivateKey.pem 2048
+    
+             openssl rsa -pubout -in jwt/rsaPrivateKey.pem -out jwt/publicKey.pem
+    
+             openssl pkcs8 -topk8 -nocrypt -inform pem -in jwt/rsaPrivateKey.pem -outform pem -out jwt/privateKey.pem
+    
+             chmod 600 jwt/rsaPrivateKey.pem
+    
+             chmod 600 jwt/privateKey.pem
+          ```
+          3. Folder will be created as jwt ( [jwt](jwt) ), and it will contain following files
+             1. [privateKey.pem](jwt/privateKey.pem)
+             2. [publicKey.pem](jwt/publicKey.pem)
+             3. [rsaPrivateKey.pem](jwt/rsaPrivateKey.pem)
+       4. Fix `ignored POM.XML` file issue : Goto Settings > Build, Execution > Build Tools > Maven > IgnoreFiles > Untick Both Module
+       5. Validate barrier key 

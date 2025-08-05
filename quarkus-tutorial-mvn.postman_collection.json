@@ -479,6 +479,48 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Part-34 Authentication and Authorization using JWT Token and Roles-Based Access Control",
+			"item": [
+				{
+					"name": "get Course",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJqd3QtdG9rZW4iLCJzdWIiOiJjb3Vyc2UiLCJncm91cHMiOlsidGVhY2hlciJdLCJleHAiOjE3NTQ0Mjc3MzQ3NTksImlhdCI6MTc1NDQyNzczMSwianRpIjoiMzViOTI2MTgtOTY3NC00ODU4LWE0MGMtYjI5OTVmZjVhNGZiIn0.PtTiDOynQhkXU63JJUjBsYsGNmAr9692y7-FzpRNoclsiP0HM_Iqggplud2ByKtSSDGIm4uUMpGXMqo13WMkdQUP2ZBI5KK8sihFSJgRwBXgL52caoP0uO9E6r4CYgpXVOCkfqlFMQD3UbUsJoSdK1Zh1RSQo-BJZSEhnHSUuy38sntiys02xi2cXxVdPIi0UCqbDxJhZ4hi02DllsBOLFunrpb3IcPChfPKOHDRnUZy5haR6IOtXYj-Zqw7QH3S3EscayvKFEMY5Cw92tk_dGoEWDAd0ToGx2KCHz6qcHlA6iH4ySmTll_hlqUq2Xvq5OP4TdPJrNANFxJiE-TIXA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8086/getCourse",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"getCourse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Token",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
