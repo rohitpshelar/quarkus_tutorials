@@ -1,9 +1,7 @@
 package com.learn.resource.part13_hibernate_ORM;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -21,5 +19,9 @@ public class Laptop {
     String name;
     String brand;
     int ram;
+
+    @OneToOne(mappedBy = "laptop", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonManagedReference
+    Owner owner;
 
 }

@@ -1,21 +1,6 @@
 # quarkus_tutorials https://youtube.com/playlist?list=PLzdlNxYnNoaf5bb-Pwb7MbWHGlRf28pVO&si=fUuG6enQWCokfN4t
 
 ## Spring Boot vs Quarkus Annotations Comparison
-| Spring Boot Annotation/Component   | Quarkus Equivalent | Purpose                          |
-|------------------------------------|--------------------|----------------------------------|
-| @SpringBootApplication           | @QuarkusMain | Marks the main application class |
-| @Autowired                       | @Inject | Dependency injection             |
-| @Service, @Repository          | @ApplicationScoped | service & repository component   |
-| extends CrudRepository           | implements PanacheRepository | Data access repository           |
-| @RestController                  | @Path (JAX-RS) | REST controller class            |
-| @GetMapping, @PostMapping etc. | @GET, @POST etc. (JAX-RS) | HTTP method mappings             |
-| @SpringBootTest                  | @QuarkusTest | Main test annotation             |
-| @MockBean                        | @InjectMock | Mocking dependencies in tests    |
-| @Configuration                   | @ApplicationScoped with @Produces | Configuration class              |
-| @Component                       | @ApplicationScoped | General component                |
-| @Value                           | @ConfigProperty | Configuration property injection |
-| @EnableCaching                   | @CacheResult, @CacheInvalidate etc. | Caching support                  |
-| @Async                           | @Blocking/@NonBlocking | Asynchronous processing          |
 
 | Annotation Type       | Spring Boot            | Quarkus               |
 |-----------------------|------------------------|-----------------------|
@@ -96,9 +81,7 @@ Reactive -> If ABC is fetched, it will return data 1 by 1 as it gets.
       
     2. Create Fallback Method 
     ```java
-    @Fallback(
-        fallbackMethod = "getTvSeriesByIdFallback"
-    )
+    @Fallback(fallbackMethod = "getTvSeriesByIdFallback")
     ```
     3. Retry ```@Retry(maxRetries = 2)```
     4. Timeout ```@Timeout(1000)```
@@ -123,6 +106,7 @@ Reactive -> If ABC is fetched, it will return data 1 by 1 as it gets.
         4. Mapping
            1. One to One
               - Add ```@OneToOne``` to secondary class
+
                 <table>
                    <tr>
                       <td>
@@ -150,4 +134,49 @@ Reactive -> If ABC is fetched, it will return data 1 by 1 as it gets.
                       </td>
                    </tr>
                 </table>
-               
+    
+               - But here we can only find Table 1 from Table 2, So
+               - We will add ```@OneToOne``` to Primary class
+
+                <table>
+                   <tr>
+                      <td>
+                         <table>
+                            <tr>
+                               <th colspan="3">Table 1</th>
+                            </tr>
+                            <tr>
+                               <td>T1_ID</td>
+                               <td>T1_Name</td>
+                               <td>T2_ID</td>
+                            </tr>
+                         </table>
+                      </td>
+                      <td>
+                         <table>
+                            <tr>
+                               <th colspan="3">Table 2</th>
+                            </tr>
+                            <tr>
+                               <td>T2_ID</td>
+                               <td>T2S_Name</td>
+                               <td>T1_ID</td>
+                            </tr>
+                         </table>
+                      </td>
+                   </tr>
+                </table>
+               - But now we have two column on both table
+               - So to remove extra column from Primary class use in Primary class :  ```@OneToOne(mappedBy = "<*Primary class*>")```
+               - To fetch both at once use Primary class : **fetch = FetchType.EAGER** : ```@OneToOne(mappedBy = "<*Primary class*>", fetch = FetchType.EAGER)```
+               - To fix ```Infinite recursion``` - which is due to both class has ```@OneToOne``` annotation
+                 1. Add @JsonManagedReference in Primary class
+                 2. Add @JsonBackReference in secondary class
+               - To save both at Once use in Primary class  : **cascade = CascadeType.ALL** : ```@OneToOne(mappedBy = "laptop", fetch = FetchType.EAGER, cascade = CascadeType.ALL)```
+19. Part 29 : Logging
+    1. Info - Method info
+    2. Debug - Data Info
+    3. warning
+    4. Error
+20. Part- 30 : Exception
+

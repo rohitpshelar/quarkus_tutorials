@@ -1,5 +1,6 @@
 package com.learn.resource.part13_hibernate_ORM;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,5 +19,6 @@ public class Owner {
     String name;
 
     @OneToOne
+    @JsonBackReference
     Laptop laptop;
 }
