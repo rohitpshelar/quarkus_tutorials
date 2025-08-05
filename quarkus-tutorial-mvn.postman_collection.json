@@ -338,6 +338,34 @@
 					"response": []
 				},
 				{
+					"name": "addLaptops & Owner OneToOne",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"t1\",\r\n  \"brand\": \"t1c\",\r\n  \"ram\": 9,\r\n  \"owner\": {\r\n    \"name\": \"t2c\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/laptop",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"laptop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "updateLaptopNameById",
 					"request": {
 						"method": "PUT",
@@ -381,6 +409,70 @@
 							"path": [
 								"laptop",
 								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Part-33 How to use MicroProfile Metrics",
+			"item": [
+				{
+					"name": "checkIfPrimeNumber",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"t1\",\r\n  \"brand\": \"t1c\",\r\n  \"ram\": 9,\r\n  \"owner\": {\r\n    \"name\": \"t2c\"\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/checkIfPrimeNumber/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"checkIfPrimeNumber",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "metrics",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/q/metrics/application",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"q",
+								"metrics",
+								"application"
 							]
 						}
 					},
