@@ -317,3 +317,6 @@ Reactive -> If ABC is fetched, it will return data 1 by 1 as it gets.
     quarkus.oidc.credentials.secret=Ib1ua1DwqAAjLscpLmF6n66uWbWkpVIg
     quarkus.oidc.authentication.user-info-required=true
     ```
+26. Part-36 How to use Lombok library
+    1. Never use @DATA to Entity Class - it will give exception or @Oneto*** due to circular ref
+    2. @Data Contains every thing like @Getter, @Setter, @AllArgConst , @NoArgCons
