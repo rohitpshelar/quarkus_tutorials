@@ -7,9 +7,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>course</artifactId>
-    <packaging>pom</packaging>
-
+    <artifactId>part-35-Keycloak</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -19,7 +17,11 @@
     <dependencies>
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-smallrye-jwt</artifactId>
+            <artifactId>quarkus-oidc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-keycloak-authorization</artifactId>
         </dependency>
     </dependencies>
 

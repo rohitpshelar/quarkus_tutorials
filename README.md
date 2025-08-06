@@ -290,4 +290,30 @@ Reactive -> If ABC is fetched, it will return data 1 by 1 as it gets.
              2. [publicKey.pem](jwt/publicKey.pem)
              3. [rsaPrivateKey.pem](jwt/rsaPrivateKey.pem)
        4. Fix `ignored POM.XML` file issue : Goto Settings > Build, Execution > Build Tools > Maven > IgnoreFiles > Untick Both Module
-       5. Validate barrier key 
+       5. Validate barrier key in https://www.jwt.io/
+25. Part-35 Authentication and Authorization using Keycloak Server
+    1. Goto https://www.keycloak.org/ and download > extract and goto bin folder
+    2. Open bin folder in cmd, run ```kc.bat start-dev```
+    3. Create New Realm(branch) by clinking on `master` i create as `iit`
+    4. Now goto Client and create New client -  
+       1. I created clientID and name as `iit-pune`
+       2. Client Type = OpenId
+       3. Turn on Client Authentication and Authorization
+       4. Tick on Flow >  Standard Flow, Direct Access Flow
+       5. Add java URL in > Root, Home
+    5. Now Roles to Client >  click client 'iit-pune' > Roles Tab > Create Role
+    6. Now Create User > fill details >  Role Mapping > add <ROLE>
+    7. Add Role to Java Method with ```@RolesAllowed({"student","professor","admin"})```
+    8. Run
+       ```shell
+           cd .\part-35-Keycloa
+           mvn quarkus:add-extension -Dextensions="quarkus-oidc" 
+           mvn quarkus:add-extension -Dextensions="quarkus-keycloak-authorization" 
+       ```
+    9. Add in [application.properties](part-35-Keycloak/src/main/resources/application.properties)
+    ```properties
+    quarkus.oidc.auth-server-url=http://localhost:8080/realms/iit
+    quarkus.oidc.client-id=iit-pune
+    quarkus.oidc.credentials.secret=Ib1ua1DwqAAjLscpLmF6n66uWbWkpVIg
+    quarkus.oidc.authentication.user-info-required=true
+    ```

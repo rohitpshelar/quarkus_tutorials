@@ -432,7 +432,7 @@
 							"raw": "{\r\n  \"name\": \"t1\",\r\n  \"brand\": \"t1c\",\r\n  \"ram\": 9,\r\n  \"owner\": {\r\n    \"name\": \"t2c\"\r\n  }\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/checkIfPrimeNumber/1",
+							"raw": "http://localhost:8080/checkIfPrimeNumber/32",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -440,7 +440,7 @@
 							"port": "8080",
 							"path": [
 								"checkIfPrimeNumber",
-								"1"
+								"32"
 							]
 						}
 					},
@@ -516,7 +516,251 @@
 					"name": "Get Token",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Part-35 keycloak",
+			"item": [
+				{
+					"name": "Get Mobile",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenName",
+									"value": "keycloak_token",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "http://localhost:8080/realms/iit/protocol/openid-connect/token",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "openid",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin_user",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "Ib1ua1DwqAAjLscpLmF6n66uWbWkpVIg",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "iit-pune",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_credentials",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/keycloak/mobile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"keycloak",
+								"mobile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Mobile By Number",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/keycloak/mobilePart7/8956185965",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"keycloak",
+								"mobilePart7",
+								"8956185965"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Mobile",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenName",
+									"value": "keycloak_token-student",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "openid",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "student",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "student_user",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "http://localhost:8080/realms/iit/protocol/openid-connect/token",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "Ib1ua1DwqAAjLscpLmF6n66uWbWkpVIg",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "iit-pune",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_credentials",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "8956185965",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/keycloak/mobile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"keycloak",
+								"mobile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Mobile",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"number\":8956185965,\r\n    \"name\":\"Rohan\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/keycloak/mobile/8956185965",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"keycloak",
+								"mobile",
+								"8956185965"
+							],
+							"query": [
+								{
+									"key": "new",
+									"value": "9822454825",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Mobile",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/keycloak/mobile/8956185965",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"keycloak",
+								"mobile",
+								"8956185965"
+							]
+						}
 					},
 					"response": []
 				}

@@ -8,6 +8,8 @@
     <modules>
         <module>course</module>
         <module>jwt-token</module>
+        <module>trainig</module>
+        <module>part-35-Keycloak</module>
     </modules>
 
     <properties>
