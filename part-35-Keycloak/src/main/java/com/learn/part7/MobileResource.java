@@ -5,6 +5,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,17 +17,18 @@ public class MobileResource {
 
     @GET
     @RolesAllowed({"student","professor","admin"})
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response getMobileList(){
         return Response.ok(mobileList).build();
     }
 
     @POST
     @RolesAllowed({"professor","admin"})
-    @Consumes(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response addMobile(String mobile){
         mobileList.add(mobile);
-        return Response.ok(mobileList).build();
+//        return Response.ok(mobileList).build();
+        return Response.created(URI.create("/keycloak/mobile")).build();
     }
 
     @PUT

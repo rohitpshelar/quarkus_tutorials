@@ -320,3 +320,10 @@ Reactive -> If ABC is fetched, it will return data 1 by 1 as it gets.
 26. Part-36 How to use Lombok library
     1. Never use @DATA to Entity Class - it will give exception or @Oneto*** due to circular ref
     2. @Data Contains every thing like @Getter, @Setter, @AllArgConst , @NoArgCons
+27. Test Class
+    1. Add dependency ``` mvn quarkus:add-extension -Dextensions="quarkus-test-security"```
+    2. Test Class needs to be annotated with ```@QuarkusTest ``` and ```@TestMethodOrder(MethodOrderer.OrderAnnotation.class)```
+    3. Method with ```@Test```, Optional ```@Order(1)```
+    4. JWT security can be disabled by two ways: [MobileResourceTest.java](part-35-Keycloak/src/test/java/com/learn/part7/MobileResourceTest.java)
+       1. @TestSecurity(authorizationEnabled = false) 
+       2. @TestSecurity(user = "test", roles = "student")
