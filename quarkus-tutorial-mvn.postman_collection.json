@@ -765,6 +765,158 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Part-37 How to convert Entity(DAO) to DTO",
+			"item": [
+				{
+					"name": "Get Citizen",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenName",
+									"value": "keycloak_token",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "http://localhost:8080/realms/iit/protocol/openid-connect/token",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "openid",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin_user",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "Ib1ua1DwqAAjLscpLmF6n66uWbWkpVIg",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "iit-pune",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_credentials",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Citizen",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Citizen"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Citizen",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenName",
+									"value": "keycloak_token",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "http://localhost:8080/realms/iit/protocol/openid-connect/token",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "openid",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin_user",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "Ib1ua1DwqAAjLscpLmF6n66uWbWkpVIg",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "iit-pune",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_credentials",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"RohN\",\r\n  \"lastName\": \"Shelar\",\r\n  \"gender\": \"Male\",\r\n  \"aadharNo\": \"123122121\",\r\n  \"age\": 0,\r\n  \"address\": \"katraj-411046\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Citizen",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Citizen"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

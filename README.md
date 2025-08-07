@@ -1,6 +1,7 @@
-# quarkus_tutorials https://youtube.com/playlist?list=PLzdlNxYnNoaf5bb-Pwb7MbWHGlRf28pVO&si=fUuG6enQWCokfN4t
+# quarkus_tutorials 🎥
+https://youtube.com/playlist?list=PLzdlNxYnNoaf5bb-Pwb7MbWHGlRf28pVO&si=fUuG6enQWCokfN4t
 
-## Spring Boot vs Quarkus Annotations Comparison
+## Spring Boot vs Quarkus Annotations Comparison 📊
 
 | Annotation Type       | Spring Boot            | Quarkus               |
 |-----------------------|------------------------|-----------------------|
@@ -243,9 +244,9 @@ Reactive -> If ABC is fetched, it will return data 1 by 1 as it gets.
        }
        ```
            
-    3. Test URLs - http://localhost:8080/q/metrics/application
+    3. 🧪 Test URLs - http://localhost:8080/q/metrics/application
 
-24. Part-34 Authentication and Authorization using JWT Token and Roles-Based Access Control
+24. Part-34 🔐 Authentication and Authorization using JWT Token and Roles-Based Access Control
     1. Create two Module
        1. App (Course) - All APIs - [course](course)
           1. Run 
@@ -258,6 +259,7 @@ Reactive -> If ABC is fetched, it will return data 1 by 1 as it gets.
              mp.jwt.verify.issuer=jwt-token
              mp.jwt.verify.publickey.location=../jwt/publicKey.pem
              ```
+          3. On Method Add ```@RolesAllowed({"teacher","admin"})```
        2. JWT - Generate Token - [JWT](JWT)
            1. Run
                 ```shell
@@ -269,10 +271,10 @@ Reactive -> If ABC is fetched, it will return data 1 by 1 as it gets.
               ```properties
               smallrye.jwt.sign.key.location=../jwt/privateKey.pem
               ```
-       3. Generate Key
+       3. Generate Key 🔐
           1. Open GitBash
           2. Run
-          ```GitBash
+          ```shell
              mkdir jwt
 
              openssl genrsa -out jwt/rsaPrivateKey.pem 2048
@@ -291,7 +293,7 @@ Reactive -> If ABC is fetched, it will return data 1 by 1 as it gets.
              3. [rsaPrivateKey.pem](jwt/rsaPrivateKey.pem)
        4. Fix `ignored POM.XML` file issue : Goto Settings > Build, Execution > Build Tools > Maven > IgnoreFiles > Untick Both Module
        5. Validate barrier key in https://www.jwt.io/
-25. Part-35 Authentication and Authorization using Keycloak Server
+25. Part-35 🔐 Authentication and Authorization using Keycloak Server
     1. Goto https://www.keycloak.org/ and download > extract and goto bin folder
     2. Open bin folder in cmd, run ```kc.bat start-dev```
     3. Create New Realm(branch) by clinking on `master` i create as `iit`
@@ -299,7 +301,7 @@ Reactive -> If ABC is fetched, it will return data 1 by 1 as it gets.
        1. I created clientID and name as `iit-pune`
        2. Client Type = OpenId
        3. Turn on Client Authentication and Authorization
-       4. Tick on Flow >  Standard Flow, Direct Access Flow
+       4. ✅ Tick on Flow >  Standard Flow, Direct Access Flow
        5. Add java URL in > Root, Home
     5. Now Roles to Client >  click client 'iit-pune' > Roles Tab > Create Role
     6. Now Create User > fill details >  Role Mapping > add <ROLE>
@@ -318,12 +320,20 @@ Reactive -> If ABC is fetched, it will return data 1 by 1 as it gets.
     quarkus.oidc.authentication.user-info-required=true
     ```
 26. Part-36 How to use Lombok library
-    1. Never use @DATA to Entity Class - it will give exception or @Oneto*** due to circular ref
-    2. @Data Contains every thing like @Getter, @Setter, @AllArgConst , @NoArgCons
-27. Test Class
+    1. ⚠️ Never use @DATA to Entity Class - it will give exception or @Oneto*** due to circular ref
+    2. ✨ @Data Contains every thing like @Getter, @Setter, @AllArgConst , @NoArgCons
+27. Part-38 How to test secured Api
     1. Add dependency ``` mvn quarkus:add-extension -Dextensions="quarkus-test-security"```
     2. Test Class needs to be annotated with ```@QuarkusTest ``` and ```@TestMethodOrder(MethodOrderer.OrderAnnotation.class)```
     3. Method with ```@Test```, Optional ```@Order(1)```
     4. JWT security can be disabled by two ways: [MobileResourceTest.java](part-35-Keycloak/src/test/java/com/learn/part7/MobileResourceTest.java)
        1. @TestSecurity(authorizationEnabled = false) 
        2. @TestSecurity(user = "test", roles = "student")
+28. Part-37 How to convert Entity(DAO) >> DTO(Modal)(Data Transfer Object)
+    1. ⚠️ Issue is if we modify data in DAO after fetching and method is annotated with @Transactional then modified data gets saved in DB.
+    2. Add dependency ``` MapStruct, MapStruct-Processor, lombok-mapstruct-binding``` from MVN
+29. Part-40 How to use Hibernate Validator Extension to validate Entities
+    1. Add dependency ``` mvn quarkus:add-extension -Dextensions="quarkus-hibernate-validator"```
+    2. Add Annotation to Entity (TODO : Need to check for DTO) [Citizen.java](trainig/src/main/java/com/learn/resource/part37_mapstruct/part13_hibernate_ORM/Citizen.java)
+    3. Catch validation message - Ref Add Method - [CitizenResource.java](trainig/src/main/java/com/learn/resource/part37_mapstruct/part13_hibernate_ORM/CitizenResource.java)
+    4. OR Add @VValid at input Method variable.
