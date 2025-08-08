@@ -337,3 +337,7 @@ Reactive -> If ABC is fetched, it will return data 1 by 1 as it gets.
     2. Add Annotation to Entity (TODO : Need to check for DTO) [Citizen.java](trainig/src/main/java/com/learn/resource/part37_mapstruct/part13_hibernate_ORM/Citizen.java)
     3. Catch validation message - Ref Add Method - [CitizenResource.java](trainig/src/main/java/com/learn/resource/part37_mapstruct/part13_hibernate_ORM/CitizenResource.java)
     4. OR Add @VValid at input Method variable.
+30. Part-41 How to debug
+    1. when ` mvn clean quarkus:dev` then default debug port is 5005
+    2. To start with Custom Port ``` mvn clean quarkus:dev -Ddebug=8121```  
+    3. In Injellij > Run >  Attach To Process > select port
